@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabarisan B</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #357ab7;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+
+        .alert {
+            font-size: 14px;
+            color: #28a745;
+            margin-top: 15px;
+        }
+
+        .alert.error {
+            color: #e74c3c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Turn Maneuver Types</h1>
+        <p>Click a button to copy the Type:</p>
+        
+        <button onclick="copyToClipboard('Standard Turn Maneuver')">Standard Turn Maneuver</button>
+        <button onclick="copyToClipboard('Bidirectional Turn Maneuver')">Bidirectional Turn Maneuver</button>
+        <button onclick="copyToClipboard('Bidirectional Two way center')">Bidirectional Two way center</button>
+        <button onclick="copyToClipboard('L Bend/U_turn')">L Bend/U_turn</button>
+        <button onclick="copyToClipboard('Kelly Road')">Kelly Road</button>
+        <button onclick="copyToClipboard('Turn Not Required at this Location')">Turn Not Required at this Location</button>
+
+        <div id="alert" class="alert"></div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            var tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            var alertDiv = document.getElementById("alert");
+            alertDiv.textContent = `"${text}" copied successfully!`;
+            alertDiv.className = "alert";
+        }
+    </script>
+
+</body>
+</html>
